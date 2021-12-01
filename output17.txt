@@ -63,21 +63,3 @@ It doesn't provide any startling new techniques, but makes a good job of explain
 The writing style can be a bit dry, and there are times when the thought of reading 500 pages can be a bit daunting.
 All things considered, highly recommended.
 
-Hi
-This book deals with various issues of Automation such
-as basic concepts, impelementation details. It has various
-case studies also. A must for those who are considering
-for testing automation.
-It should have more coverage for data driven automation.
-[Niteen]
-
-Great delineation on how to utilize test execution tools. Their explaination is great. The bottom line is " that it is a gem of a book. I would recommend it highly to all level of SQA professionals!"
-
-The book theoritically explains testing in great detail.It would have been an awesome book if it had a software part to it.Lack of software makes the learning experience incomplete but still the book is worth the money.
-
-this book will give you a clear idea about how does test automation works. strictly concentrating on automation but the Build explanations with clear GUI's are pretty much helpful
-
-Ordered for work related study. Arrived promptly, great condition.
-
-Not very usefull book,concept are bit too vague I do not recommend it. May be useful for very novice tester.
-

@@ -74,16 +74,33 @@ public class TryingAnotherPage {
         driver.get("https://www.amazon.com/Software-Test-Automation-Mark-Fewster/product-reviews/0201331403/ref=cm_cr_getr_d_paging_btm_prev_1?ie=UTF8&reviewerType=all_reviews&pageNumber=1");
         driver.manage().window().setSize(new Dimension(1050, 660));
         driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-        List<WebElement> reviews = driver.findElements(By.xpath("//span[@class='/html/body/div[1]/div[3]/div/div[1]/div/div[1]/div[5]/div[3]/div/div[2]/div/div/div[2]/a[1]/i/span']"));
+        List<WebElement> reviews = driver.findElements(By.xpath("//*[@data-hook=\"review-star-rating\"]/span"));
         List<String> list = new ArrayList<>();
         for (WebElement webElement : reviews) {
-            String review = webElement.getText();
+            String review = webElement.getAttribute("innerHTML");
             System.out.println(review);
             list.add(review);
         }
-
-
-        FileWriter writer = new FileWriter("output18.txt");
+        FileWriter writer = new FileWriter("output20.txt");
+        for(String str: list) {
+            writer.write(str + System.lineSeparator() + System.lineSeparator());
+        }
+        writer.close();
+    }
+    @Test
+    public void example4() throws IOException {
+        driver.get("https://www.amazon.com/Software-Test-Automation-Mark-Fewster/product-reviews/0201331403/ref=cm_cr_getr_d_paging_btm_prev_1?ie=UTF8&reviewerType=all_reviews&pageNumber=1");
+        driver.manage().window().setSize(new Dimension(1050, 660));
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        List<WebElement> reviews = driver.findElements(By.xpath("//span[@class='a-size-base a-color-secondary review-date']"));
+//        List<WebElement> reviews = driver.findElements(By.xpath("//*[@class=\"a-size-base a-color-secondary review-date\"]/span"));
+        List<String> list = new ArrayList<>();
+        for (WebElement webElement : reviews) {
+            String review = webElement.getAttribute("innerHTML");
+            System.out.println(review);
+            list.add(review);
+        }
+        FileWriter writer = new FileWriter("output21.txt");
         for(String str: list) {
             writer.write(str + System.lineSeparator() + System.lineSeparator());
         }
