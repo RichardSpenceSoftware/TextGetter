@@ -36,48 +36,78 @@ public class WindowOpen {
 
     @Test
     public void example() throws IOException {
+        Actions actions = new Actions(driver);
         driver.get("https://www.amazon.com/Software-Test-Automation-Mark-Fewster/product-reviews/0201331403/ref=cm_cr_getr_d_paging_btm_prev_1?ie=UTF8&reviewerType=all_reviews&pageNumber=1");
         driver.manage().window().setSize(new Dimension(1050, 660));
-        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-        List<WebElement> reviews = driver.findElements(By.xpath("//div[@class='a-row a-spacing-small review-data']"));
+        String test = driver.findElement(By.xpath("//*[text()='Next page']/..")).getAttribute("class");
+        System.out.println(test);
         List<String> list = new ArrayList<>();
-        for (WebElement webElement : reviews) {
-            String review = webElement.getText();
-            System.out.println(review);
-            list.add(review);
+
+        while(test.equals("a-last")) {
+        List<WebElement> reviews = driver.findElements(By.xpath("//div[@class='a-row a-spacing-small review-data']"));
+            for (WebElement webElement : reviews) {
+                String review = webElement.getText();
+                System.out.println(review);
+                list.add(review);
+            }
+
+            driver.findElement(By.xpath("//li/*[text()='Next page']")).click();
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            test = driver.findElement(By.xpath("//*[text()='Next page']/..")).getAttribute("class");
+
+            FileWriter writer = new FileWriter("output40.txt", true);
+            for (String str : list) {
+                writer.write(str + System.lineSeparator() + System.lineSeparator());
+            }
+            writer.close();
         }
 
 
-        FileWriter writer = new FileWriter("output40.txt");
-        for (String str : list) {
-            writer.write(str + System.lineSeparator() + System.lineSeparator());
-        }
-        writer.close();
 
-        {
-            WebElement element = driver.findElement(By.linkText("Next page→"));
-            Actions builder = new Actions(driver);
-            builder.moveToElement(element).perform();
-        }
-        driver.findElement(By.linkText("Next page→")).click();
-        {
-            WebElement element = driver.findElement(By.tagName("body"));
-            Actions builder = new Actions(driver);
-            builder.moveToElement(element, 0, 0).perform();
-        }
-        List<WebElement> reviews2 = driver.findElements(By.xpath("//div[@class='a-row a-spacing-small review-data']"));
-        List<String> list2 = new ArrayList<>();
-        for (WebElement webElement : reviews2) {
-            String review = webElement.getText();
-            System.out.println(review);
-            list2.add(review);
-        }
-
-
-        FileWriter writer2 = new FileWriter("output40.txt", true);
-        for (String str : list2) {
-            writer2.write(str + System.lineSeparator() + System.lineSeparator());
-        }
-        writer2.close();
+//        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+//        List<WebElement> reviews = driver.findElements(By.xpath("//div[@class='a-row a-spacing-small review-data']"));
+//        List<String> list = new ArrayList<>();
+//        for (WebElement webElement : reviews) {
+//            String review = webElement.getText();
+//            System.out.println(review);
+//            list.add(review);
+//        }
+//
+//
+//        FileWriter writer = new FileWriter("output40.txt");
+//        for (String str : list) {
+//            writer.write(str + System.lineSeparator() + System.lineSeparator());
+//        }
+//        writer.close();
+//
+//        {
+//            WebElement element = driver.findElement(By.linkText("Next page→"));
+//            Actions builder = new Actions(driver);
+//            builder.moveToElement(element).perform();
+//        }
+//        driver.findElement(By.linkText("Next page→")).click();
+//        {
+//            WebElement element = driver.findElement(By.tagName("body"));
+//            Actions builder = new Actions(driver);
+//            builder.moveToElement(element, 0, 0).perform();
+//        }
+//        List<WebElement> reviews2 = driver.findElements(By.xpath("//div[@class='a-row a-spacing-small review-data']"));
+//        List<String> list2 = new ArrayList<>();
+//        for (WebElement webElement : reviews2) {
+//            String review = webElement.getText();
+//            System.out.println(review);
+//            list2.add(review);
+//        }
+//
+//
+//        FileWriter writer2 = new FileWriter("output40.txt", true);
+//        for (String str : list2) {
+//            writer2.write(str + System.lineSeparator() + System.lineSeparator());
+//        }
+//        writer2.close();
     }
 }
