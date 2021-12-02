@@ -100,9 +100,5 @@ public class TwoPagesOneTest {
             writer4.write(str + System.lineSeparator() + System.lineSeparator());
         }
         writer4.close();
-
-
-
-
     }
 }

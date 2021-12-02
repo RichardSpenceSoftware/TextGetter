@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
-public class SecondSite {
+public class ThirdSiteTogeather {
     private WebDriver driver;
     private Map<String, Object> vars;
     JavascriptExecutor js;
@@ -31,51 +31,50 @@ public class SecondSite {
     }
     @Test
     public void example() throws IOException {
-        driver.get("https://uk.trustpilot.com/review/www.webhosting.uk.com");
+        driver.get("https://play.google.com/store/apps/details?id=app.spidy.spidy&gl=GB&showAllReviews=true");
         driver.manage().window().setSize(new Dimension(1050, 660));
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        List<WebElement> reviews = driver.findElements(By.xpath("//p[@class='typography_typography__23IQz typography_body__2OHdw typography_color-black__1uBz2 typography_weight-regular__iZYoT typography_fontstyle-normal__1_HQI']"));
+        List<WebElement> reviews = driver.findElements(By.xpath("//div[@class='UD7Dzf']"));
         List<String> list = new ArrayList<>();
         for (WebElement webElement : reviews) {
             String review = webElement.getText();
             System.out.println(review);
             list.add(review);
         }
-        FileWriter writer = new FileWriter("output6.txt");
+        FileWriter writer = new FileWriter("output8.txt");
         for(String str: list) {
             writer.write(str + System.lineSeparator() + System.lineSeparator() +System.lineSeparator());
         }
         writer.close();
+
         driver.manage().window().setSize(new Dimension(1050, 660));
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        List<WebElement> reviews2 = driver.findElements(By.xpath("//*[@class=\"star-rating_starRating__1-dQA star-rating_medium__2z6xF\"]/img"));
+        List<WebElement> reviews2 = driver.findElements(By.xpath("//*[@class=\"pf5lIe\"]/div"));
         List<String> list2 = new ArrayList<>();
         for (WebElement webElement : reviews2) {
-            String review = webElement.getAttribute("alt");
+            String review = webElement.getAttribute("aria-label");
             System.out.println(review);
             list2.add(review);
         }
-        FileWriter writer2 = new FileWriter("output22.txt");
+        FileWriter writer2 = new FileWriter("output7.txt");
         for(String str: list2) {
             writer2.write(str + System.lineSeparator() + System.lineSeparator());
         }
         writer2.close();
 
         driver.manage().window().setSize(new Dimension(1050, 660));
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        List<WebElement> reviews3 = driver.findElements(By.xpath("//*[@class=\"typography_typography__23IQz typography_bodysmall__24hZa typography_color-gray-6__11VpO typography_weight-regular__iZYoT typography_fontstyle-normal__1_HQI styles_datesWrapper__2ND6X\"]/time"));
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        List<WebElement> reviews3 = driver.findElements(By.xpath("//span[@class='p2TkOb']"));
         List<String> list3 = new ArrayList<>();
         for (WebElement webElement : reviews3) {
-            String review = webElement.getAttribute("datetime");
+            String review = webElement.getText();
             System.out.println(review);
             list3.add(review);
         }
-        FileWriter writer3 = new FileWriter("output24.txt");
+        FileWriter writer3 = new FileWriter("output23.txt");
         for(String str: list3) {
             writer3.write(str + System.lineSeparator() + System.lineSeparator());
         }
         writer3.close();
     }
-
 }
-
