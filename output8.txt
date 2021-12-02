@@ -1,0 +1,101 @@
+Wrote a script, tested it, and it worked. Pretty straightforward. However it only works when the screen is on and this app is the focussed app. The whole point of automating the tasks I scripted was so I could switch off my screen and leave it running. Edit - After the reply from Suyambu, I have fou...
+Full Review
+
+
+Even after buying the "Upgrade", I still get ads when running automation scripts which makes this app... not an automation app at all because you manually have to close eash ad that pops up as the script is running.
+
+
+Buggy. Programs run 4-5 times then don't work. Great idea for an app though.
+
+
+I can't get passed the video in the beginning and then crashes
+
+
+Theres something you need to change it like a saving data in web ! Or add external bot
+
+
+I wrote a simple script which in facebook will grab the url's posts available in most recent news feed and then like the posts.... But there's a catch!!!!!!!!! IF I run the script again when there is no new posts, it will unlike the post beacause ........ Usually there is different class names for t...
+Full Review
+
+
+I found it. Thanks. Edit. The app works as its supposed to be. Please fix crash. I experienced a lot of crash when running my script. Script works perfect for a few minutes then i paused. Then when start again crash always.
+
+
+What functions are available are great. Would be great to see while loops and the ability to suppress popup boxes, because they will pause the script until manually cleared.
+
+
+You guys should add supports for widgets so we can tell it to activate on the home screen instead of activating it in the app.
+
+
+The app is really good Only issue is it crashes regularly, sometimes it says it's due to net error, even though I placed time intervals between each link accessed.
+
+
+Every time i open the browser in app, i have to enter the login details every time, can something be done about it.
+
+
+I want to give 5 star at first but it has too much ads And upgrade cost is high And yes I face some problems while running the code when I make the code it works great for 5 to 6 times Then I am facing problem to run the same code
+
+
+There needs to be an option to select an element to click on or record actions and import them to the block editor. Plus proxy support Socks/http would be killer!
+
+
+I like the way the app works but I wish you can add a way we can execute javascript code like Web Marco Bot and use within the blocks.
+
+
+Great app. Only thing missing are widgets so we can launch an action with 1 press from the homescreen
+
+
+As a Scratch user i found almost no learning curve with this app. I would definately recommend
+
+
+The app would be great if there were some basic manual. How can I select item from a dropdown menu on a website?
+
+
+it's great but how do you automate a selection in a drop down list?
+
+
+How to schedule the scripts? Creating the scripts is fun and easy, but is there a way to schedule the scripts to run in fixed schedules based on certain conditions?
+
+
+Will not allow for complex web searches using quotes or operators. Please refund my 14.99
+
+
+Thanks for the update, now there is enough room to see the whole code.
+
+
+Get html elementvis not working. Frequently crashing
+
+
+On clicking get HTML elements it exit main screen
+
+
+Good project! Please add more modules html javascript
+
+
+It should have an option to pay for no ads
+
+
+Is there option to copy all blocks at once, or to edit it on pc?
+
+
+Do not install this app. Too many ads while testing... It will make you angry... Useless app. Fu×king developer.
+
+
+Doesn't work. Please refund my money
+
+
+Get html always crashes it Cant use
+
+
+Great automation tool
+
+
+This app is very worse wasting my time
+
+
+Nagware, ads that nag nag nag.....
+
+
+Ads. 🖕
+
+
