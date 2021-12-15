@@ -10,6 +10,8 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -18,7 +20,7 @@ import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
-public class CVS {
+public class CSV2 {
     private WebDriver driver;
     private Map<String, Object> vars;
     JavascriptExecutor js;
@@ -39,10 +41,11 @@ public class CVS {
     @Test
     public void example() throws IOException {
         Actions actions = new Actions(driver);
-        driver.get("https://www.amazon.com/Software-Test-Automation-Mark-Fewster/product-reviews/0201331403/ref=cm_cr_getr_d_paging_btm_prev_1?ie=UTF8&reviewerType=all_reviews&pageNumber=1");
+        driver.get("https://uk.trustpilot.com/review/www.webhosting.uk.com");
         driver.manage().window().setSize(new Dimension(1050, 660));
         driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-        String test = driver.findElement(By.xpath("//*[text()='Next page']/..")).getAttribute("class");
+        driver.findElement(By.xpath("//div/*[text()='I accept']")).click();
+        String test = driver.findElement(By.xpath("//*[text()='77']/..")).getAttribute("class");
         System.out.println(test);
         List<String> list = new ArrayList<>();
         List<String> list2 = new ArrayList<>();
@@ -50,10 +53,10 @@ public class CVS {
         List<String> list3 = new ArrayList<>();
         List<String> list5 = new ArrayList<>();
 
-        while(test.equals("a-last")) {
+        while(test.equals("pagination_pagination___F1qS")) {
             String strUrl = driver.getCurrentUrl();
             driver.get(strUrl);
-            List<WebElement> reviews = driver.findElements(By.xpath("//div[@class='a-row a-spacing-small review-data']"));
+            List<WebElement> reviews = driver.findElements(By.xpath("//p[@class='typography_typography__23IQz typography_body__2OHdw typography_color-black__1uBz2 typography_weight-regular__iZYoT typography_fontstyle-normal__1_HQI']"));
             for (WebElement webElement : reviews) {
                 String review = webElement.getText();
                 System.out.println(review);
@@ -68,25 +71,25 @@ public class CVS {
                 e.printStackTrace();
             }
             driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-            List<WebElement> reviews3 = driver.findElements(By.xpath("//i[@data-hook=\"review-star-rating\"]/span"));
-
-
+            List<WebElement> reviews3 = driver.findElements(By.xpath("//*[@class=\"star-rating_starRating__1-dQA star-rating_medium__2z6xF\"]/img"));
             for (WebElement webElement : reviews3) {
-                String review = webElement.getAttribute("innerHTML");
+                String review = webElement.getAttribute("alt");
                 System.out.println(review);
                 list3.add(review);
             }
             driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-            List<WebElement> reviews4 = driver.findElements(By.xpath("//span[@class='a-size-base a-color-secondary review-date']"));
+            List<WebElement> reviews4 = driver.findElements(By.xpath("//*[@class=\"typography_typography__23IQz typography_bodysmall__24hZa typography_color-gray-6__11VpO typography_weight-regular__iZYoT typography_fontstyle-normal__1_HQI styles_datesWrapper__2ND6X\"]/time"));
             for (WebElement webElement : reviews4) {
                 driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-                String review = webElement.getAttribute("innerHTML");
+                String review = webElement.getAttribute("datetime");
                 System.out.println(review);
                 list4.add(review);
             }
-            test = driver.findElement(By.xpath("//*[text()='Next page']/..")).getAttribute("class");
-            if (test.equals("a-last")) {
-                driver.findElement(By.xpath("//li/*[text()='Next page']")).click();
+            test = driver.findElement(By.xpath("//*[text()='77']/..")).getAttribute("class");
+            if (test.equals("pagination_pagination__24aCt")) {
+                Actions action = new Actions(driver);
+                WebElement we = driver.findElement(By.xpath("//nav/*[text()='Next page']"));
+                action.moveToElement(we).moveToElement(driver.findElement(By.xpath("//nav/*[text()='Next page']"))).click().build().perform();
             }
             driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         }
@@ -111,7 +114,7 @@ public class CVS {
 
 
 
-        for (int i=0;i<(list8.size()) ;i++){
+        for (int i=0;i<(list6.size()) ;i++){
             String hing = list6.get(i);
             list2.add(hing);
             String thing = list8.get(i);
@@ -128,7 +131,7 @@ public class CVS {
         for(int i=0;i<list5.size();i++){
             System.out.println(list5.get(i));
         }
-        File file = new File("test.csv");
+        File file = new File("test2.csv");
         FileWriter fw = new FileWriter(file);
         BufferedWriter bw = new BufferedWriter(fw);
         bw.write("Review,Star Rating,Date");
