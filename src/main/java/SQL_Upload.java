@@ -2,15 +2,13 @@
 import java.io.*;
 import java.sql.*;
 
-import org.supercsv.cellprocessor.Optional;
-import org.supercsv.cellprocessor.ParseDouble;
 import org.supercsv.cellprocessor.constraint.NotNull;
 import org.supercsv.cellprocessor.ift.CellProcessor;
 import org.supercsv.io.CsvBeanReader;
 import org.supercsv.io.ICsvBeanReader;
 import org.supercsv.prefs.CsvPreference;
 
-public class Unchanged {
+public class SQL_Upload {
 
         public static void main(String[] args) {
 String jdbcURL = "jdbc:mysql://localhost:3306/sys";
@@ -25,9 +23,9 @@ Connection connection = null;
 
 ICsvBeanReader beanReader = null;
 CellProcessor[] processors = new CellProcessor[] {
-new NotNull(), // course name
-new NotNull(), // student name
-new NotNull(), // rating
+new NotNull(),
+new NotNull(),
+new NotNull(),
 };
 
 try {
@@ -67,7 +65,6 @@ statement.executeBatch();
 
 beanReader.close();
 
-// execute the remaining queries
 statement.executeBatch();
 
 connection.commit();

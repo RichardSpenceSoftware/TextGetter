@@ -15,7 +15,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
-public class Example2 {
+public class GoogleStore {
     private WebDriver driver;
     private Map<String, Object> vars;
     JavascriptExecutor js;
@@ -35,7 +35,6 @@ public class Example2 {
         driver.get("https://play.google.com/store/apps/details?id=app.spidy.spidy&gl=GB&showAllReviews=true");
         driver.manage().window().setSize(new Dimension(1050, 660));
         driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-//        String test = driver.findElement(By.xpath("//*[text()='Next page']/..")).getAttribute("class");
         String test = "hello";
         List<String> fileContent = new ArrayList<>();
 
@@ -45,8 +44,6 @@ public class Example2 {
             for (WebElement review : reviews) {
                 String reviewId = review.getAttribute("jsdata");
                 System.out.println(reviewId);
-//                String foreign = driver.findElement(By.xpath(("//*[@id=\"" + reviewId + "\" and @data-hook=\"review\"]/div/div\n"))).getAttribute("id");
-                String reviewIdXPath = "//*[@id=\"customer_review-" + reviewId + "\"]";
                 reviewText = driver.findElement(By.xpath("//div[@jsdata = \""+reviewId+"\"]/div/div[2]/div[2]/span[1]\n")).getText();
                 System.out.println(reviewText);
                 starRating = driver.findElement(By.xpath("//div[@jsdata = \""+reviewId+"\"]/div/div[2]/div[1]/div[1]/div/span[1]/div/div\n")).getAttribute("aria-label");

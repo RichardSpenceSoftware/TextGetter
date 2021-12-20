@@ -15,7 +15,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
-public class ExampleTest {
+public class AmazonReview {
   private WebDriver driver;
   private Map<String, Object> vars;
   JavascriptExecutor js;
