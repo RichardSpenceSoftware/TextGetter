@@ -42,23 +42,6 @@ public class KFC {
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         driver.findElement(By.xpath("//button[text()='Allow All Cookies']")).click(); //accept cookies
         JavascriptExecutor js = (JavascriptExecutor) driver;
-//        driver.findElement(By.name("email")).sendKeys("tomscattergood@hotmail.co.uk");
-//        try {
-//            Thread.sleep(1000);
-//        } catch (Exception e) {
-//        }
-//        driver.findElement(By.name("pass")).sendKeys("Ir0nmaiden18");
-//        try {
-//            Thread.sleep(1000);
-//        } catch (Exception e) {
-//        }
-//        driver.findElement(By.id("loginbutton")).click();
-
-
-
-        //List<WebElement> reviews2 = driver.findElements(By.xpath("//div[@class='_1dwg _1w_m _q7o']")); //retrieves name of reviewer, date of review and comment
-//        System.out.println(reviews2);
-
         List<String> list = new ArrayList<>();
         js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
         List<WebElement> reviews2 = null;
@@ -87,47 +70,36 @@ public class KFC {
             String xpath = review.substring(0,9);
 
             List <WebElement> likes = driver.findElements(By.xpath("//div[@data-testid='post_message']//p[contains(text(),'"+xpath+"')]" + "/parent::div/../../../../parent::div//span[@aria-label='See who reacted to this']/span/a"));
-            StringBuilder like = new StringBuilder();
+//            StringBuilder like = new StringBuilder();
+            List<String> like = new ArrayList<>();
+            like.add("\"0\"");
+            like.add("\"0\"");
+            like.add("\"0\"");
 
             for(int j=0;j< likes.size();j++){
-                like.append(likes.get(j).getAttribute("aria-label")+",").append(" ");
-            }
+                String reaction = likes.get(j).getAttribute("aria-label");
+                if(reaction.contains("Like")){
+                like.set(0,("\"" + reaction + "\""));
+                }
+                if(reaction.contains("Haha")){
+                    like.set(1,("\"" + reaction + "\""));
+                }
+                if(reaction.contains("Angry")){
+                    like.set(2,("\"" + reaction + "\""));
+                }
+                }
             System.out.println(like);
-
-//            list.add(date);
-//            list.add(review);
-//            list.add(like.toString());
-//            System.out.println(list);
             if(like.toString().equals("")) {
                 fileContent.add("\"" + review + "\"" + "," + "\"0\"" + "," + "\"" + date + "\"");
             }
             else{
-                fileContent.add("\"" + review + "\"" + "," + "\"" + like + "\"" + "," + "\"" + date + "\"");
-
+                fileContent.add("\"" + review + "\"" + ","  + like.toString().replace("[", "").replace("]", "")+ ","   + "\"" + date + "\"");
             }
         }
-//        FileWriter writer = new FileWriter("KFCReviews.txt");
-//        for (String str : list) {
-//            writer.write(str + System.lineSeparator());
-//        }
-//        writer.close();
-//
-//        File file = new File("KFCReviews.csv");
-//        FileWriter fw = new FileWriter(file);
-//        BufferedWriter bw = new BufferedWriter(fw);
-//        bw.write("Date, Review, Reactions");
-//        bw.newLine();
-//        for(int i=0;i<(list.size());i++)
-//        {
-//            bw.write(list.get(i) + ", ");
-//            //bw.newLine();
-//        }
-//        bw.close();
-//        fw.close();
         File file = new File("KFCReviews.csv");
         FileWriter fw = new FileWriter(file);
         BufferedWriter bw = new BufferedWriter(fw);
-        bw.write("Review,Star,Date");
+        bw.write("Review,Like,Haha,Angry,Date");
         bw.newLine();
         for (String s : fileContent) {
             bw.write(s);
