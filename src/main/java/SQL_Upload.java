@@ -12,10 +12,10 @@ public class SQL_Upload {
 
         public static void main(String[] args) {
 String jdbcURL = "jdbc:mysql://localhost:3306/sys";
-String username = "root";
-String password = "Dobenfry123@";
+String username = "newuser";
+String password = "Password123";
 
-String csvFilePath = "test3.csv";
+String csvFilePath = "KFCReviews.csv";
 
 int batchSize = 20;
 
@@ -34,7 +34,7 @@ long start = System.currentTimeMillis();
 connection = DriverManager.getConnection(jdbcURL, username, password);
 connection.setAutoCommit(false);
 
-String sql = "INSERT INTO withage (Review, Star, Age) VALUES (?, ?, ?)";
+String sql = "INSERT INTO KFC (Review, Star, Age) VALUES (?, ?, ?)";
 PreparedStatement statement = connection.prepareStatement(sql);
 
 beanReader = new CsvBeanReader(new FileReader(csvFilePath),
